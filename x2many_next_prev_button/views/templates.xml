@@ -3,8 +3,8 @@
     <data>
         <template id="assets_backend_next_prev_buttons" name="x2many_next_button assets" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
-                <link rel="stylesheet" href="/x2many_next_button/static/src/css/x2many_next_prev_css.css" />
-                <script type="text/javascript" src="/x2many_next_button/static/src/js/js_next_prev_buttons.js"></script>
+                <link rel="stylesheet" href="/x2many_next_prev_button/static/src/css/x2many_next_prev_css.css" />
+                <script type="text/javascript" src="/x2many_next_prev_button/static/src/js/js_next_prev_buttons.js"></script>
             </xpath>
         </template>
     </data>
