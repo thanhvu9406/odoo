@@ -6,7 +6,7 @@
         add next - previous button to popup x2many lines
         """,
     "description": """
-    Add next - previous button to form popup for one2many, many2many fields line.
+    Add next - previous button to form popup for readonly one2many, many2many fields line.
 """,
 
     'author': "Nguyễn Thành Vũ",
