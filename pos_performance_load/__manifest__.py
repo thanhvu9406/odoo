@@ -18,7 +18,7 @@
 #
 ##############################################################################
 {
-    'name': "pos_performance_load",
+    'name': "Point Of Sale Performance Load Product.",
 
     'description': """
         Point of sale performance load product.
