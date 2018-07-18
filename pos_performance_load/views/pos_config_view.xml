@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_pos_config_form" model="ir.ui.view">
+            <field name="name">pos.config.form.view.inherit</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_config_form"/>
+            <field name="arch" type="xml">
+                <sheet position='inside'>
+                    <notebook>
+                        <page string="First load Product">
+                            <group>
+                                <field name="pos_load_step"/>
+                            </group>
+                            <label for="firstload_ctg_ids"/>
+                            <field name="firstload_ctg_ids" nolabel="1"/>
+                            <label for="firstload_product_ids"/>
+                            <field name="firstload_product_ids" nolabel="1"/>
+                        </page>
+                        <!--<page string="First load Partner">-->
+                            <!--<label for="firstload_partner_ids"/>-->
+                            <!--<field name="firstload_partner_ids" nolabel="1"/>-->
+                        <!--</page>-->
+                    </notebook>
+                </sheet>
+            </field>
+        </record>
+    </data>
+</odoo>
