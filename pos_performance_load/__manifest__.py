@@ -3,7 +3,7 @@
     'name': "pos_performance_load",
 
     'description': """
-        Point of sale performance load
+        Point of sale performance load product.
     """,
 
     'author': "Nguyễn Thành Vũ",
