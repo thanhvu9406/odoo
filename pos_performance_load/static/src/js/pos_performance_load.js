@@ -24,8 +24,12 @@ odoo.define('pos.performance.load', function (require) {
             this.ready.done(function (){
                 self.pos_load_step = self.config.pos_load_step;
                 // We continue to load product data
-                self.load_server_data_continue()
-            });
+
+                // We hide loading text at the top left hand
+                $('.o_loading').css('visibility', 'hidden');
+
+                self.load_server_data_continue();
+            })
         },
 
         load_server_data_continue: function(){
@@ -37,15 +41,18 @@ odoo.define('pos.performance.load', function (require) {
             });
 
             var product_model = posmodel_super.models[product_index];
+            var context = typeof product_model.context === 'function' ? product_model.context(self,{}) : product_model.context;
 
             var records = new Model(product_model.model)
                 .query(product_model.fields)
                 .filter(product_model.domain)
                 .order_by(product_model.order)
-                .context(product_model.context)
+                .context(context)
                 .limit(self.pos_load_step)
                 .offset(self.offset_product)
-                .all();
+                .all({shadow: true});
+
+
             records.then(function (products) {
                 self.db.add_products(products);
 
@@ -55,11 +62,14 @@ odoo.define('pos.performance.load', function (require) {
                     self.load_server_data_continue();
                 }else{
                     self.loaded_product = true;
+                    // do show loading again
+                    $('.o_loading').css('visibility', 'visible');
                     console.log('Loaded: ', self.offset_product);
                     // click button home on product once function load is done
                     $('.breadcrumb-button.breadcrumb-home').click();
                 }
             });
+
             return true
         },
 

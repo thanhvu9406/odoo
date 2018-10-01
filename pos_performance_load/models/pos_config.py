@@ -31,7 +31,7 @@ class PosConfig(models.Model):
                                              'product_id', 'First load Product',
                                              domain=[('sale_ok', '=', True), ('available_in_pos', '=', True)])
 
-    firstload_ctg_ids = fields.Many2many('product.category', 'pos_config_product_category_fist_load_rel', 'config_id', 'ctg_id',
+    firstload_ctg_ids = fields.Many2many('pos.category', 'pos_config_pos_category_fist_load_rel', 'config_id', 'ctg_id',
                                          'First load Product Category')
     pos_load_step = fields.Integer('POS load step', default=1000, required=1)
 
@@ -47,7 +47,7 @@ class PosConfig(models.Model):
         # res['partner'] += [['id', 'in', config.firstload_partner_ids.ids or []]]
         res['product'] += ['|',
                            ['id', 'in', config.firstload_product_ids.ids or []],
-                           ['categ_id', 'in', config.firstload_ctg_ids.ids or []]]
+                           ['pos_categ_id', 'in', config.firstload_ctg_ids.ids or []]]
         return res
 
     @api.model
@@ -73,3 +73,4 @@ class PosConfig(models.Model):
         prod_ctx = products.with_context(pricelist=Config.pricelist_id.id, display_default_code=False,
                                          lang=self.env.user.lang)
         return prod_ctx.read(p_fields)
+
